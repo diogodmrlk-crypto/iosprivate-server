@@ -2,7 +2,7 @@
 // Este repositório deve permanecer privado: não publique estes valores.
 process.env.NODE_ENV ||= 'production';
 process.env.SQLITE_PATH ||= '/var/data/iosprivate.sqlite';
-process.env.REQUIRE_PERSISTENT_DISK ||= 'true';
+process.env.REQUIRE_PERSISTENT_DISK ||= 'false';
 process.env.ADMIN_USERNAME ||= 'admin';
 process.env.ADMIN_PASSWORD ||= 'IRZVltWkFZ3gVDHoGfJVnvOz';
 process.env.JWT_SECRET ||= 'IWayDoawcEXJdH6PAaJVLiCH+u2K6dxM3cQay6pNQBDqyDiGlJqNpAJ9WIscJYlH';

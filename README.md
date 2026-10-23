@@ -135,4 +135,4 @@ Os testes cobrem inicialização, criação, validação, expiração, bloqueio/
 
 Este repositório contém uma configuração embutida para o deploy inicial. Mantenha o repositório privado, conecte-o ao Render como Blueprint e confirme o Persistent Disk em `/var/data`. O usuário administrativo embutido é `admin`; a senha inicial foi gerada no momento da criação deste repositório e deve ser trocada no código antes de compartilhar o projeto. O código de visualização da aba Keys é `20009`.
 
-A configuração embutida não elimina a necessidade de Persistent Disk. O serviço precisa de um plano compatível com disco; no plano Free o filesystem continua efêmero e as keys podem desaparecer.
+Este perfil está ajustado para iniciar no plano Free sem Persistent Disk. O SQLite funciona em `/var/data`, mas o filesystem do Free é efêmero: as keys podem desaparecer em reinicializações ou novos deploys. Para persistência real, use um VPS com volume ou plano com disco.
