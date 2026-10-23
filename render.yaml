@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: iosprivate-api
+    runtime: node
+    plan: starter
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SQLITE_PATH
+        value: /var/data/iosprivate.sqlite
+      - key: REQUIRE_PERSISTENT_DISK
+        value: 'true'
+      - key: JWT_SECRET
+        value: IWayDoawcEXJdH6PAaJVLiCH+u2K6dxM3cQay6pNQBDqyDiGlJqNpAJ9WIscJYlH
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: IRZVltWkFZ3gVDHoGfJVnvOz
+      - key: KEYS_VIEW_CODE
+        value: '20009'
+      - key: CORS_ORIGIN
+        value: '*'
+      - key: TRUST_PROXY
+        value: '1'
+    disk:
+      name: iosprivate-data
+      mountPath: /var/data
+      sizeGB: 1

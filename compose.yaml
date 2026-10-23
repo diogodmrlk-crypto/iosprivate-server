@@ -1,0 +1,23 @@
+services:
+  iosprivate-api:
+    build: .
+    container_name: iosprivate-api
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${PORT:-10000}:10000"
+    env_file:
+      - .env.server
+    environment:
+      NODE_ENV: production
+      PORT: 10000
+      SQLITE_PATH: /var/data/iosprivate.sqlite
+      REQUIRE_PERSISTENT_DISK: "true"
+    volumes:
+      - ${IOSPRIVATE_DATA_DIR:-/var/lib/iosprivate}:/var/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:10000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
